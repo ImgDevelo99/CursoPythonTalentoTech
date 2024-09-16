@@ -81,14 +81,41 @@ v not f  = true
 f not v  = true
 
 """
-edad = 20
-ciudadanoColombiano = True
+# edad = 20
+# ciudadanoColombiano = True
 
-puedeVotar =  edad != 18 and ciudadanoColombiano
+# puedeVotar =  edad != 18 and ciudadanoColombiano
 
-if puedeVotar:
-    print("TRUE")
-else:
-    print("FALSE")
+# if puedeVotar:
+#     print("TRUE")
+# else:
+#     print("FALSE")
 
-print(puedeVotar)
+# print(puedeVotar)
+
+#---------------------------Operadores de asignacion-------------------------------------------------
+"""
+=           var = "hola"
++=          x+=2 =7                 x=x+2 =7    5=5+2 =7           // x = 5
+-=          x-=2                    x=x-2
+*=          x*=2                    x=x*2 
+/=          x/=2                    x=x/2
+%=          x%=2                    x=x%2
+**=         x**2                    x=x**2    
+"""
+
+# var = 3
+# print(var)
+
+# x = 5
+# print(x)
+# x+=3           # x=x+1   5=5+1 = 6
+# print(x)
+
+y = 10
+y%=3
+print(y)
+
+div = 30
+div/= 10
+print(div)
