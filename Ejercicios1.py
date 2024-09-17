@@ -45,13 +45,34 @@
 #  y mostrar por pantalla la cantidad de ahorros tras el primer, segundo y tercer años. Redondear
 #  cada cantidad a dos decimales.
 """
-tasa_interes = 0.04
+# tasa_interes = 0.04
 
-depositoInicial = float(input("Ingrese la cantidad de dinero a depositar: "))
+# depositoInicial = float(input("Ingrese la cantidad de dinero a depositar: "))
 
-ahorroPrimerAño = depositoInicial * tasa_interes # completar y tarea
+# ahorroPrimerAño = round(depositoInicial * ( 1 +tasa_interes),2) # completar y tarea
+# ahorroSegundoAño = ahorroPrimerAño * (1 + tasa_interes)
+# ahorroTercerAño = ahorroSegundoAño * (1 + tasa_interes)
 
+# print(f"ahorro total del primer año: {ahorroPrimerAño}")
+# print(f"ahorro total del segundo año: {ahorroSegundoAño:.2f} ")
+# print(f"ahorro total del tercer año: {ahorroTercerAño:.2f} ")
 
+#--------------------------------------------------------------------------------------------
+"""
+solicitar dos datos al usuario y calcular el area de rectangulo, triangulo, poligono regular
+formula del poligono regular es: a = perimetro * apotema / 2
+"""
+dato1 = float(input("ingrese el primer valor(base o lado)"))
+dato2 = float(input("ingrese el segundo valor(altura o apotema)"))
+#numLados = float(input("ingrese el numero de lados (para el poligono)"))
+
+areaRectangulo = dato1 * dato2
+areaTriangulo = (dato1 * dato2)/2
+areaPoligono = (dato1 * dato2)/2
+
+print(areaRectangulo)
+print(areaTriangulo)
+print(areaPoligono)
 
 
 
