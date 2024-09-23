@@ -99,16 +99,57 @@ consola la edad
 #5 y 6.9 = aprobado
 #menos de 4.9 =insuficiente
 
-calificacion = float(input("Ingrese su calificacion entre 0 y 10 : "))
+# calificacion = float(input("Ingrese su calificacion entre 0 y 10 : "))
 
-if calificacion >= 9:
-    print("Felicitaciones  su nota es Excelente")
-elif calificacion >=7:
-    print("Su nota es notable")
-elif calificacion >= 5:
-    print("su calificacion es Aprobado")    
-else:
-    print("Su calificacion es insuficiente")    
+# if calificacion >= 9:
+#     print("Felicitaciones  su nota es Excelente")
+# elif calificacion >=7:
+#     print("Su nota es notable")
+# elif calificacion >= 5:
+#     print("su calificacion es Aprobado")    
+# else:
+#     print("Su calificacion es insuficiente")    
 
 #------------------------------------------------------------
+#tarea
 #solicitarle al usuario que ingrese un numero del 1 al 7, e indicar que dia de la semana es
+
+# numero = int(input("Ingrese un numero del 1 al 7 para indicarle el dia de la semana: "))
+
+# if numero == 1:
+#     print("Lunes")
+# elif numero == 2:
+#     print("Martes")
+# elif numero == 3:
+#     print("Miercoles")
+# elif numero == 4:
+#     print("Jueves")
+# elif numero == 5:
+#     print("Viernes")
+# elif numero == 6:
+#     print("Sabado")
+# elif numero == 7:
+#     print("Domingo")
+# else:
+#     print("el numero que usted ingreso es invalido, ingrese un numero del 1 al 7")
+
+#-------------------------------------------------------------------------------------------------
+
+#escribir un programa donde le solicitemos al usuario que ingres los 3 lados del triangulo, el programa me debe 
+#indicar si el triangulo es EQUILATERO(todos los lados iguales),el triangulo es ISOCELES(dos lados iguales y uno diferente)
+#triangulo escaleno (todos los lados son diferentes).
+
+lado1 = float(input("ingrese la longitud del primer lado: "))
+lado2 = float(input("ingrese la longitud del segundo lado: "))
+lado3 = float(input("ingrese la longitud del tercer lado: "))
+
+if lado1 == lado2 and lado1 == lado3 and lado2 == lado3 :
+    print("EQUILATERO")
+elif lado1 == lado2 or lado1 == lado3 or lado2 == lado3 :
+    print("ISOCELES")
+else:
+    print("ESCALENO") 
+
+#Escribe un programa que solicite al usuario ingresar un año y determine si es un año bisiesto.
+# Un año es bisiesto si es divisible por 4, pero no por 100, excepto si también es divisible por 400.    
+
