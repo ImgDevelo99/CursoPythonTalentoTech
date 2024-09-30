@@ -188,44 +188,44 @@ print(len(numeros))
 
 contactos = []#[nombre:diego, telefono : "3333", nombre: "maria", telefono: 3333, nombre: 2juan",]
 
-print("-------AGENDA TELEFONICA-------------")
-while True:
-    print("\n1. Agregar contacto")
-    print("\n2. Eliminar contacto")
-    print("\n3. Mostrar contacto")
-    print("\n4. Salir")
+# print("-------AGENDA TELEFONICA-------------")
+# while True:
+#     print("\n1. Agregar contacto")
+#     print("\n2. Eliminar contacto")
+#     print("\n3. Mostrar contacto")
+#     print("\n4. Salir")
 
-    opcion = input("Elige una opcion: ")
+#     opcion = input("Elige una opcion: ")
 
-    #agregar un contacto
-    if opcion == "1":
-        nombre = input("Nombre de contacto: ")
-        telefono = input("Numero telefonico: ")
-        contactos.append([nombre, telefono])
+#     #agregar un contacto
+#     if opcion == "1":
+#         nombre = input("Nombre de contacto: ")
+#         telefono = input("Numero telefonico: ")
+#         contactos.append([nombre, telefono])
 
-    #eliminar un contacto
-    elif opcion == "2":
-        nombre = input("nombre del contactp a eliminar: ")
-        for i in contactos:
-            if i[0] == nombre:
-                contactos.remove(i)
-                print("Contacto eliminado exitosamente")
-                break
-        else:
-            print("no hay contactos")    
+#     #eliminar un contacto
+#     elif opcion == "2":
+#         nombre = input("nombre del contactp a eliminar: ")
+#         for i in contactos:
+#             if i[0] == nombre:
+#                 contactos.remove(i)
+#                 print("Contacto eliminado exitosamente")
+#                 break
+#         else:
+#             print("no hay contactos")    
 
-    #mostrar contactos
-    elif opcion == "3":
-       # if contactos: #lista
-        for i in range(0, len(contactos),2): #bucle
-            print(f"Nombre:{contactos[i][0]}, Telefono: {contactos[i][1]}")  
-        else:    
-            print("no hay contactos")   
+#     #mostrar contactos
+#     elif opcion == "3":
+#        # if contactos: #lista
+#         for i in range(0, len(contactos),2): #bucle
+#             print(f"Nombre:{contactos[i][0]}, Telefono: {contactos[i][1]}")  
+#         else:    
+#             print("no hay contactos")   
 
-    #salir
-    elif opcion == "4":
-        print( "Gracias")
-        break        
+#     #salir
+#     elif opcion == "4":
+#         print( "Gracias")
+#         break        
 
 #----------------------------------------------------------------------------------
 # #Escribe un programa en Python que permita al usuario crear una lista de sus películas favoritas.
@@ -251,12 +251,88 @@ de manejar situaciones en las que el usuario intente realizar acciones sobre tar
 mensajes adecuados.
 
 Requisitos:
-
 El programa debe permitir al usuario ingresar una descripción y una fecha de vencimiento para cada nueva tarea.
 Cada tarea debe tener un identificador único que se utiliza para actualizar o eliminar la tarea.
 El programa debe mostrar todas las tareas en un formato claro.
 El usuario debe poder actualizar la descripción y/o la fecha de vencimiento de una tarea.
 El usuario debe poder eliminar una tarea especificando su identificador."""
+
+tareas = []
+id_tarea = 1
+
+while True:
+    print("-----------\nMEnu de tareas-------------")
+    print("1. Nueva tarea")
+    print("2. Leer todas las tareas")
+    print("3. Actualizar las tareas")
+    print("4. eliminar una tarea")
+    print("5. Salir")
+
+    opcion = input("Elige la opcion: ")
+    
+    #crear nueva tarea
+    if opcion == "1":
+        descripcion = input("Descripcion de la tarea: ")
+        fechaVencimiento = input("Fecha de vencimiento (dd/mm/aaaa): ")
+
+        tareas.append({"id": id_tarea, "descripcion":descripcion, "fechaVencimiento":fechaVencimiento})
+        print(f"Tarea {id_tarea} creada con exito\n")
+        id_tarea += 1
+
+        #leer todas las tareas
+    elif opcion == "2":
+        if len(tareas) == 0:
+            print("No hay tareas")
+        else:
+            print("---------------lista de tares pendientes-------------")
+            for i in tareas:
+                print(f"ID: {i["id"]} descripcion: {i["descripcion"]} Fecha de vencimiento {i["fechaVencimiento"]}")
+            print()    
+
+        #Editar tarea
+    elif opcion == "3" :
+        idActualizar = int(input("Ingrese el id de la tarea a editar: "))
+        tareaEncontrada = False
+        for i in tareas :
+            if i ["id"] == idActualizar:
+                nuevaDescripcion = input("Escriba la nueva descripcion (dejar en blanco si on quiere editar): ")
+                nuevaFecha = input("ingrese nueva fecha de vencimiento (dejar en blanco si on quiere editar): ")
+                if nuevaDescripcion:
+                    i["descripcion"] = nuevaDescripcion
+                if nuevaFecha:
+                    i["fechaVencimiento"] = nuevaFecha
+                print(f"Tarea {idActualizar} actualizado con exito\n")
+                tareaEncontrada = True
+                break
+        if not tareaEncontrada:
+            print(f"NO se encontro la tarea con el ID: {idActualizar}\n")    
+
+        #Eliminar tarea#
+    elif opcion == "4" :
+        idEliminar = int(input("ingrese el id de la tarea a eliminar: "))
+        tareaEncontrada = False
+        for i in tareas :
+            if i ["id"] == idEliminar:
+                tareas.remove(i) 
+                print(f"tarea {idEliminar} eliminada con exito\n")
+                tareaEncontrada = True
+                break
+        if not tareaEncontrada:
+                print(f"no se encontro la tarea con ID {idEliminar}")
+
+    #Salir del programa
+    elif opcion == "5" :
+        print("Salir del programa")
+        break
+    else:
+        print("opcion invalida, por favor verifique: ")            
+
+
+
+    
+
+
+
 
 
 
