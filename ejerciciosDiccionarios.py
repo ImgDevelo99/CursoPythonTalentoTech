@@ -73,56 +73,56 @@ Agregar un nuevo producto o actualizar la cantidad de un producto existente.
 Eliminar un producto del inventario.
 Mostrar el inventario actual.
 """
-inventario = {}
-continuar = True
+# inventario = {}
+# continuar = True
 
-while continuar:
-    print("\n Opciones")
-    print("1. agregar o actualizar un producto")
-    print("2. eliminar un producto")
-    print("3. mostrar el inventario")
-    print("4. salir")
+# while continuar:
+#     print("\n Opciones")
+#     print("1. agregar o actualizar un producto")
+#     print("2. eliminar un producto")
+#     print("3. mostrar el inventario")
+#     print("4. salir")
 
-    opcion = input("ingrese una opcion entre 1 y 4: ")
+#     opcion = input("ingrese una opcion entre 1 y 4: ")
 
-    if opcion == "1" :
-        #agregar o actualizar
-        producto = input("Nombre del producto a ingresar: ").lower()
-        cantidad = int(input(f"cantidad de {producto}: "))
+#     if opcion == "1" :
+#         #agregar o actualizar
+#         producto = input("Nombre del producto a ingresar: ").lower()
+#         cantidad = int(input(f"cantidad de {producto}: "))
 
-        if producto in inventario :
-            inventario[producto] += cantidad
-            print(f"se a agregado {cantidad} unidades de {producto}. total : {inventario[producto]} unidades")
-        else:
-            inventario[producto] = cantidad
-            print(f"{producto.capitalize()} añadido al inventario con {cantidad} unidades")    
+#         if producto in inventario :
+#             inventario[producto] += cantidad
+#             print(f"se a agregado {cantidad} unidades de {producto}. total : {inventario[producto]} unidades")
+#         else:
+#             inventario[producto] = cantidad
+#             print(f"{producto.capitalize()} añadido al inventario con {cantidad} unidades")    
 
-    elif opcion == "2":
-        #eliminar
-        producto = input("Nombre del producto a eliminar: ").lower()
+#     elif opcion == "2":
+#         #eliminar
+#         producto = input("Nombre del producto a eliminar: ").lower()
 
-        if producto in inventario:
-            del inventario[producto]
-            print(f"{producto.capitalize()} eliminado del inventario.")
-        else:
-            print(f"{producto.capitalize()} no se encontro en el inventario.")
+#         if producto in inventario:
+#             del inventario[producto]
+#             print(f"{producto.capitalize()} eliminado del inventario.")
+#         else:
+#             print(f"{producto.capitalize()} no se encontro en el inventario.")
 
-    elif opcion == "3":
-        #mostrar inventario
-        print("\n--INVENTARIO ACTUAL--")
-        if inventario:
-            for producto, cantidad in inventario.items():
-                print(f"{producto.capitalize()}: {cantidad} unidades")
-        else:
-            print("inventario esta vacio")
+#     elif opcion == "3":
+#         #mostrar inventario
+#         print("\n--INVENTARIO ACTUAL--")
+#         if inventario:
+#             for producto, cantidad in inventario.items():
+#                 print(f"{producto.capitalize()}: {cantidad} unidades")
+#         else:
+#             print("inventario esta vacio")
 
-    elif opcion == "4":
-        #salir
-        continuar = False  
-        print("gracias por preferirnos.........")
+#     elif opcion == "4":
+#         #salir
+#         continuar = False  
+#         print("gracias por preferirnos.........")
 
-    else:
-        print("opcion incorrecta por favor verifique nuevamente")
+#     else:
+#         print("opcion incorrecta por favor verifique nuevamente")
 #------------------------------------------------------------------------------   
 """
 simular un sistema de administración de una biblioteca. El sistema gestionará información sobre libros y usuarios. 
@@ -137,5 +137,110 @@ Agregar usuarios a la biblioteca. diccionarios
 Prestar libros a los usuarios.
 Devolver libros a la biblioteca.
 Mostrar el estado de los libros y los usuarios.
-"""     
+"""    
+biblioteca = {}
+usuario = {}
+continuar = True
+
+while continuar :
+    print("\n---Opciones---")
+    print("1. Agregar un libro a la bibliioteca")
+    print("2. Agregar un usuario a la biblioteca")
+    print("3. prestar un libro a un usuario")
+    print("4. devolver un libro a la biblioteca")
+    print("5. mostrar estado del libro y de los usuarios")
+    print("6. Salir ")
+
+    opcion = input("Ingrese una opcion (1-6): ")
+
+    if opcion == "1" : # id: 1 , nombre : don quijote 
+        idLibro = input("Ingrese el ID del libro : ")
+
+        if idLibro in biblioteca:
+            print()
+            print(f"el libro con el ID {idLibro} ya existe")
+        else:
+            titulo = input("Ingrese el titulo del libro: ")
+            autor = input("ingrese ek autor del libro: ")
+            cantidad = int(input("Ingrese la cantidad de copias disponibles: ")) # 10
+
+            #agregar un libro
+            biblioteca[idLibro] = { #biblioteca = {idLibro: [titulo: don quijote, autor: miguel, cantidad: 10]}
+                "titulo": titulo,
+                "autor": autor,
+                "cantidad": cantidad
+            }
+            print()
+            print(f"libro {titulo} añadido a la biblioteca.")
+
+            #-----------------------------------------------------------------------------------------
+    elif opcion == "2":
+        idUsuario = input("Ingrese el ID del usuario")
+
+        if idUsuario in usuario:
+            print(f"el usuario con ID {idUsuario} ya existe.")
+
+        else:
+            nombreUsuario = input("Ingrese el nombre del usuario: ")
+            usuario[idUsuario] = {
+                "nombre": nombreUsuario,
+                "prestamo": []
+            }
+            print(f"usuario {nombreUsuario} añadido a la biblioteca.")   
+
+                #-----------------------------------------------------------------------------------
+    elif opcion == "3":
+        idUsuario = input("Ingrese el ID del usuario: ")
+        if idUsuario not in usuario:
+            print(f"No se encontro el usuario con el ID {idUsuario}")
+
+        else:
+            idLibro = input("ingrese el ID del libro: ")
+            if idLibro not in biblioteca:
+                print(f"No se encontro el usuario con el ID {idLibro}")
+            elif biblioteca[idLibro]["cantidad"] <= 0 :
+                print(f"no hay copias disponibles del libro {biblioteca[idLibro]["titulo"]}.")
+
+            else:#prestamo libro
+                usuario[idUsuario]["prestamo"].append(idLibro) 
+                biblioteca[idLibro]["cantidad"]-=1
+                print(f"El libro {biblioteca[idLibro]["titulo"]} ha sido prestado a {usuario[idUsuario]["nombre"]}.")
+
+            #-----------------------------------------------------------------------------------------------
+    elif opcion == "4":
+        idUsuario = input("ingrese el ID del usuario: ")
+        if idUsuario not in usuario:
+            print(f"no se encontro el usuario con ID {idUsuario}")
+        else:
+            idLibro = input("Ingrese el Id del libro a devolver: ")
+            if idLibro not in biblioteca:
+                print(f"no se encontro el usuario con ID {idLibro}")
+
+            else:
+                usuario[idUsuario]["prestamo"].remove(idLibro)
+                biblioteca[idLibro]["cantidad"] += 1
+                print(f"el libro {biblioteca[idLibro]["titulo"]} ha sido devuelto por {usuario[idUsuario]["nombre"]}." )        
+
+                #----------------------------------------------------------------------------------------
+    elif opcion == "5":
+        print("\nEstado de la biblioteca-----------")
+        if biblioteca:
+            for idLibro, inf in biblioteca.items():
+                print(f"ID : {idLibro} Titulo: {inf["titulo"]} Autor: {inf["autor"]} copias disponibles: {inf["cantidad"]}")
+        else:
+            print("No hay libros en la biblioteca")
+
+        print("\nEstado de los usuario----")
+        if usuario:
+                for idUsuario, inf in usuario.items():                           
+                    print(f"ID usuario: {idUsuario} Nombre: {inf["nombre"]} libros prestados: {", ".join(inf["prestamo"]) if inf["prestamo"] else  "ninguno" }")
+        else:
+            print("no hay usuarios registrados")
+
+
+
+                
+
+
+
 
